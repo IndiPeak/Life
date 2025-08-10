@@ -1,0 +1,15 @@
+:root {
+	--main-bg: hsl(0, 0%, 5%);
+	--second-bg: hsl(0, 0%, 6%);
+	--bg-light: hsl(0, 0%, 8%);
+
+	--highlight-bg: #636363;
+
+	--border: #262626;
+	--border-muted: hsl(0, 0%, 12%);
+
+	--border-highlight: hsl(0, 0%, 22%);
+	
+	--think-text: hsl(0, 0%, 55%);
+	--text: hsl(0, 0%, 65%);
+}

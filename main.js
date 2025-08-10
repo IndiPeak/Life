@@ -8,7 +8,7 @@ const dataPath = path.join(os.homedir + '/OwnLifeData', 'data.dt')
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 900,
-	height: 610,
+	height: 615,
 	minWidth: 900,
 	minHeight: 610,
 	autoHideMenuBar: true,
@@ -29,7 +29,7 @@ const createWindow = () => {
   else {
 	win.loadFile('start.html')
   }
-//   win.webContents.openDevTools()
+  win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {

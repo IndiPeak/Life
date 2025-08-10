@@ -179,7 +179,7 @@ button {
 	width: 72vw;
 	height: 100vh;
 	background-color: transparent;
-	padding: 10px 10px 15px 15px;
+	padding: 15px 10px 15px 15px;
 }
 
 .yearContents {
@@ -212,16 +212,62 @@ button {
 	opacity: 0;
 }
 
-.daysCont {
-	position: relative;
-	grid-template-columns: auto auto auto auto auto auto auto;
+.weekDay {
+	display: inline-block;
 
-	padding-right: 40px;
+	font-weight: 400;
+	font-size: 16px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 0;
+}
+
+.daysCont {
+	display: inline-block;
+	position: relative;
+	width: 380px;
+	padding: 0 0 0 0;
+
+	/* grid-template-columns: 3.5em 3.5em 3.5em 3.5em 3.5em 3.5em 3.5em; */
+
+	grid-template-columns: auto 
+	auto auto auto auto auto auto;
 }
 
 .day {
 	display: inline-block;
-	background-color: var(--think-text);
-	width: 45px;
-	height: 15px;
+	background-color: transparent;
+	border: 1px solid var(--border-highlight);
+	width: 42px;
+	height: 42px;
+	margin-bottom: 5px;
+	margin-top: 0;
+	margin-right: 5px;
+	color: var(--highlight-bg);
+	font-family: 'Nunito';
+	text-align: end;
+	line-height: 65px;
+	font-size: 13px;
+	padding-right: 5px;
+}
+
+.cdpCont {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.currentDayProgress {
+	height: 260px;
+	width: 70px;
+	background-color: transparent;
+	border: 1px solid var(--border-highlight);
+	margin-top: 0;
+}
+
+.dn {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 100;
+	margin-top: 5px;
+	color: var(--think-text);
 }

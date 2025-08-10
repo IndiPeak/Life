@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	else {
 		const date = new Date()
 		const currentYear = date.getFullYear()
-		
+		const currentMonthDays = new Date(currentYear, date.getMonth(), 0).getDate()
 
 		document.querySelector('.app').style.animation = "show .5s forwards"
 
@@ -79,12 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(err)
 		}
 
-		const tb_year = document.getElementById('tb_month')
+		const tb_year = document.getElementById('tb_year')
 		document.querySelector('.currentYear').textContent = currentYear
 		document.querySelector('.currentMonth').textContent = date.toLocaleString('eng' , { month: 'long'})
 		SetTbActiveStyles(tb_year)
 
+		const yearContents = document.querySelector('.yearContents')
+		const monthContents = document.querySelector('.monthContents')
+		const dayContents = document.querySelector('.dayContents')
+
+		const allContents = document.querySelectorAll("#content")
 		const all_tb = document.querySelectorAll('.topButton')
+
+		UpdateAllSection()
+		UpdateMonthes()
 
 		for (let tb of all_tb) {
 			tb.addEventListener('click', () => {
@@ -99,12 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				if (tb.id == "tb_year") {
 					UpdateMonthes()
+					ShowViewContents(yearContents)
+				}
+				else if (tb.id == "tb_month") {
+					UpdateDays()
+					ShowViewContents(monthContents)
 				}
 			})
 		}
 
-		UpdateAllSection()
-		UpdateMonthes()
 
 		const resizer = document.querySelector('.resizer')
 		const sidePanel = document.querySelector('.sidePanel')
@@ -177,13 +188,62 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 
-		const yearContents = document.querySelector('.yearContents')
+		function UpdateDays() {
+			const daysCont = document.querySelector('.daysCont')
 
+			let currentTime = date.getHours() + (date.getMinutes() / 60)
+			console.log(currentTime)
+			document.querySelector('.currentDayProgress').style.background = "linear-gradient(to top, var(--think-text)" + currentTime / 24 * 100 + "%, transparent 0"
+			if (daysCont.children.length == 0) {
+	
+				const weekday = ["Sun.","Mon.","Tu.","Wed.","Thu.","Fri.","Sat."]
+	
+				document.querySelector('.dn').textContent = weekday[date.getDay()] + " " + date.getDate()
+	
+				for (let i = 0; i < currentMonthDays; i++){
+					const newDay = document.createElement('div')
+					let day = new Date(currentYear, date.getMonth(), i+1).getDay()
+	
+					if (i == 0) {
+						let previousMonthDays
+						if (date.getMonth() == 0) {
+							previousMonthDays = new Date(currentYear, 11, 0).getDate()
+						}
+						else {
+							previousMonthDays = new Date(currentYear, date.getMonth(), 0).getDate()
+						}
+						for (let j = 0; j < day; j++) {
+							let emptyDay = document.createElement('div')
+							emptyDay.className = 'day'
+							emptyDay.textContent = previousMonthDays - (day - (j + 1))
+							emptyDay.style.color = "#383838"
+							emptyDay.style.borderColor = "#1f1f1f" 
+							emptyDay.style.opacity = 1
+							daysCont.appendChild(emptyDay)
+						}
+					}
+	
+					newDay.className = 'day'
+					newDay.textContent = i + 1
+	
+					if (i < date.getDate()) {
+						newDay.style.backgroundColor = "#a6a6a6"
+						newDay.style.color = "#262626"
+					}
+	
+					daysCont.appendChild(newDay)
+				}
+			}
+		}
 
 		function ShowViewContents(contents) {
-			contents.style.animation = "show .4s forwards"
+			contents.style.animation = "show .1s forwards"
 
-			
+			for (let c of allContents) {
+				if (c != contents) {
+					c.style.animation = "hide .1s forwards"
+				}
+			}
 		}
 
 		function resizeSidebar(e) {
@@ -233,18 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			tb.style.backgroundColor = "transparent"
 			tb.style.color = "#A6A6A6"
 			tb.style.fontWeight = 300
-		}
-
-		function ShowYearContents() {
-
-		}
-
-		function ShowMonthContents() {
-
-		}
-
-		function ShowDayContents() {
-
 		}
 	}
 })

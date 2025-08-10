@@ -3,9 +3,9 @@
 	--second-bg: hsl(0, 0%, 6%);
 	--bg-light: hsl(0, 0%, 8%);
 
-	--highlight-bg: #636363;
+	--highlight-bg: hsl(0, 0%, 39%);
 
-	--border: #262626;
+	--border: hsl(0, 0%, 15%);
 	--border-muted: hsl(0, 0%, 12%);
 
 	--border-highlight: hsl(0, 0%, 22%);

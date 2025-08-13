@@ -1,7 +1,9 @@
 const { ipcRenderer } = require('electron/renderer')
+const { app } = require('electron')
 const fs = require('node:fs')
 const os = require('os')
 const path = require('node:path')
+const { setInterval } = require('node:timers/promises')
 
 const folderPath = os.homedir + '/OwnLifeData'
 
@@ -13,8 +15,6 @@ const dataPath = path.join(folderPath, 'data.dt')
 
 document.addEventListener('DOMContentLoaded', () => {
 	if (!fs.existsSync(dataPath)) {
-		const scrollBox = document.querySelector('.scrollBox')
-		
 		const yearButtons = document.querySelectorAll(".year")
 		const apply = document.querySelector(".apply")
 		
@@ -88,11 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		const monthContents = document.querySelector('.monthContents')
 		const dayContents = document.querySelector('.dayContents')
 
-		const allContents = document.querySelectorAll("#content")
+		let activeContents
+
+		// const allContents = document.querySelectorAll("#content")
 		const all_tb = document.querySelectorAll('.topButton')
 
 		UpdateAllSection()
 		UpdateMonthes()
+		activeContents = yearContents
 
 		for (let tb of all_tb) {
 			tb.addEventListener('click', () => {
@@ -112,6 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				else if (tb.id == "tb_month") {
 					UpdateDays()
 					ShowViewContents(monthContents)
+				}
+				else{
+					UpdateHours()
+					ShowViewContents(dayContents)
 				}
 			})
 		}
@@ -168,12 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				let txt = dat.toLocaleString('eng' , { month: 'long'})
 				monthes[i].textContent = txt
 				
-				if (i < date.getMonth()) {
-					monthes[i].style.background = "linear-gradient(to right, var(--think-text) 100%, transparent 0)"
+				if (i < date.getMonth() + 1) {
+					monthes[i].style.background = "linear-gradient(to right, var(--text) 100%, transparent 0)"
 				}
-				else if (i == date.getMonth()) {
+				else if (i == date.getMonth() + 1) {
 					let fill = step * date.getDate()
-					monthes[i].style.background = "linear-gradient(to right, var(--think-text) " + fill + "%, transparent 0)"
+					monthes[i].style.background = "linear-gradient(to right, var(--text) " + fill + "%, transparent 0)"
 
 					let windowWidth = window.innerWidth
 					let txtPiece = (100 * (10 + txt.length)) / windowWidth
@@ -190,10 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		function UpdateDays() {
 			const daysCont = document.querySelector('.daysCont')
-
 			let currentTime = date.getHours() + (date.getMinutes() / 60)
 			console.log(currentTime)
-			document.querySelector('.currentDayProgress').style.background = "linear-gradient(to top, var(--think-text)" + currentTime / 24 * 100 + "%, transparent 0"
+			document.querySelector('.currentDayProgress').style.background = "linear-gradient(to top, var(--text)" + currentTime / 24 * 100 + "%, transparent 0"
 			if (daysCont.children.length == 0) {
 	
 				const weekday = ["Sun.","Mon.","Tu.","Wed.","Thu.","Fri.","Sat."]
@@ -236,14 +242,41 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 
-		function ShowViewContents(contents) {
-			contents.style.animation = "show .1s forwards"
+		function UpdateHours() {
+			const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+	
+			document.querySelector('.currentDay').textContent = weekday[date.getDay()] + ",   " + date.getDate() 
 
-			for (let c of allContents) {
-				if (c != contents) {
-					c.style.animation = "hide .1s forwards"
-				}
-			}
+			let currentTime = date.getHours() + (date.getMinutes() / 60)
+			const sun = document.querySelector('.sun')
+			let deg = (currentTime / 24 * 100) * 3.6 + 180
+			console.log(deg)
+			sun.style.transform = "rotate(" + deg + "deg)"
+			UpdateSec()
+		}
+		
+		function UpdateSec() {
+			let tm = document.querySelector('.tm')
+			let dt = new Date()
+
+			let h = addZero(dt.getHours())
+			let m = addZero(dt.getMinutes())
+			let s = addZero(dt.getSeconds())
+			tm.textContent = h + ":" + m + ":" + s
+
+			setTimeout(UpdateSec, 1000)
+		}
+
+		function addZero(i) {
+			if (i < 10) { i = "0" + i }
+			return i
+		}
+
+		function ShowViewContents(content) {
+			activeContents.style.animation = "hide .1s forwards"
+			content.style.animation = "show .1s forwards"
+
+			activeContents = content
 		}
 
 		function resizeSidebar(e) {

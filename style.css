@@ -103,6 +103,24 @@ button {
 	}
 }
 
+.month {
+	position: relative;
+	border-color: var(--border);
+	border-top: 1px solid var(--border-highlight);
+	border-width: 1px;
+	margin-bottom: 10px;
+	width: 215px;
+	height: 35px;
+	background: var(--main-bg);
+	text-align: center;
+	align-items: center;
+	color: var(--text);
+	font-family: "Nunito";
+	font-size: 14px;
+
+	transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
+}
+
 .apply {
 	position: relative;
 	display: block;

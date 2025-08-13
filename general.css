@@ -209,6 +209,8 @@ button {
 }
 
 .monthContents {
+	display: inline-block;
+	position: absolute;
 	opacity: 0;
 }
 
@@ -249,6 +251,13 @@ button {
 	line-height: 65px;
 	font-size: 13px;
 	padding-right: 5px;
+
+	transition: border-color .4s, color .4s;
+}
+
+.day:hover {
+	border-color: var(--highlight-bg);
+	color: var(--think-text);
 }
 
 .cdpCont {
@@ -258,7 +267,7 @@ button {
 
 .currentDayProgress {
 	height: 260px;
-	width: 70px;
+	width: 50px;
 	background-color: transparent;
 	border: 1px solid var(--border-highlight);
 	margin-top: 0;
@@ -270,4 +279,40 @@ button {
 	font-weight: 100;
 	margin-top: 5px;
 	color: var(--think-text);
+}
+
+.dayContents {
+	display: inline-block;
+	position: absolute;
+	opacity: 0;
+}
+
+.cycle {
+	display: flex;
+	justify-content: center;
+	width: 350px;
+	height: 350px;
+	background-color: transparent;
+	border: 1px solid var(--border-highlight);
+	margin-top: 15px;
+	border-radius: 200px;
+	padding: 0 0 0 0;
+}
+
+.sun {
+	width: 20px;
+	height: 20px;
+	background-color: var(--text);
+	border-radius: 10px;
+	margin-top: -9px;
+
+	transform: rotate(0deg);
+	transform-origin: 9px 185px;
+}
+
+.tm {
+	color: var(--text);
+	position: absolute;
+	margin-top: 145px;
+	font-size: 36px;
 }

@@ -13,6 +13,7 @@ const createWindow = () => {
 	minHeight: 610,
 	autoHideMenuBar: true,
 	titleBarStyle: 'hidden',
+	hasShadow: true,
 	titleBarOverlay: {
 		color: '#0D0D0D',
 		symbolColor: '#A6A6A6',
@@ -30,7 +31,7 @@ const createWindow = () => {
   else {
 	win.loadFile('start.html')
   }
-  win.webContents.openDevTools()
+//   win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {

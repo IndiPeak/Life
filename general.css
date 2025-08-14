@@ -238,7 +238,7 @@ button {
 
 .day {
 	display: inline-block;
-	background-color: transparent;
+	background-color: var(--main-bg);
 	border: 1px solid var(--border-highlight);
 	width: 42px;
 	height: 42px;
@@ -252,7 +252,7 @@ button {
 	font-size: 13px;
 	padding-right: 5px;
 
-	transition: border-color .4s, color .4s;
+	transition: border-color 0.2s, color 0.2s;
 }
 
 .day:hover {
@@ -296,7 +296,6 @@ button {
 	border: 1px solid var(--border-highlight);
 	margin-top: 15px;
 	border-radius: 200px;
-	padding: 0 0 0 0;
 }
 
 .sun {

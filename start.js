@@ -201,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(currentTime)
 			document.querySelector('.currentDayProgress').style.background = "linear-gradient(to top, var(--text)" + currentTime / 24 * 100 + "%, transparent 0"
 			if (daysCont.children.length == 0) {
-	
 				const weekday = ["Sun.","Mon.","Tu.","Wed.","Thu.","Fri.","Sat."]
 	
 				document.querySelector('.dn').textContent = weekday[date.getDay()] + " " + date.getDate()
@@ -224,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
 							emptyDay.textContent = previousMonthDays - (day - (j + 1))
 							emptyDay.style.color = "#383838"
 							emptyDay.style.borderColor = "#1f1f1f" 
-							emptyDay.style.opacity = 1
 							daysCont.appendChild(emptyDay)
 						}
 					}

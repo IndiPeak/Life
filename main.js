@@ -19,6 +19,7 @@ const createWindow = () => {
 		symbolColor: '#A6A6A6',
 	},
 	// icon: 'f_ico/icons/win/icon.ico',
+	backgroundColor: "#0D0D0D",
 	webPreferences: {
 		sandbox: false,
 		contextIsolation: false,

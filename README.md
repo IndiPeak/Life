@@ -3,3 +3,6 @@
 <p align="center"><img src="icons/icon_vf.png" width="200" height="200"/></p>
 
 <h3 align="center">An productive app that helps you keep track of your life.</h3>
+
+<h2>Preview</h2>
+

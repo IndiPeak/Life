@@ -1,11 +1,5 @@
-
+  
 <h1 align="center">Own Life</h1>
 <p align="center"><img src="icons/icon_vf.png" width="200" height="200"/></p>
 
 <h3 align="center">An productive app that helps you keep track of your life.</h3>
-
-<h2>Installation</h2>
-
-<h3>Releases:</h3>
-
-<img src="icons/windows-icon-md-2505157118.png" width="30" height="30">

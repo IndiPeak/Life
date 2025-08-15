@@ -8,4 +8,4 @@
 
 <h3>Releases:</h3>
 
-<h4>Windows</h4>
+<img src="icons/windows-icon-md-2505157118.png" width="30" height="30">

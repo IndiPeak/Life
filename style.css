@@ -50,11 +50,15 @@ h4 {
 	display: none;
 }
 
+.app {
+	text-align: center;
+}
+
 .scrollBox {
+	margin: 0 auto;
 	display: grid;
 	justify-content: center;
 	justify-self: center;
-	text-align: center;
 	width: 250px;
 	height: 50vh;
 	background-color: var(--second-bg);
@@ -72,7 +76,9 @@ button {
 	border-radius: 10px;
 }
 
+
 .year {
+	display: block;
 	position: relative;
 	border-color: var(--border);
 	border-top: 1px solid var(--border-highlight);
@@ -103,7 +109,7 @@ button {
 	}
 }
 
-.month {
+/* .month {
 	position: relative;
 	border-color: var(--border);
 	border-top: 1px solid var(--border-highlight);
@@ -119,11 +125,11 @@ button {
 	font-size: 14px;
 
 	transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
-}
+} */
 
 .apply {
 	position: relative;
-	display: block;
+	display: flex;
 	margin-top: 40px;
 	justify-self: center;
 	text-align: center;

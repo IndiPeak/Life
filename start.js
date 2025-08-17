@@ -3,7 +3,6 @@ const { app } = require('electron')
 const fs = require('node:fs')
 const os = require('os')
 const path = require('node:path')
-const { setInterval } = require('node:timers/promises')
 
 const folderPath = os.homedir + '/OwnLifeData'
 

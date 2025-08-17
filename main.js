@@ -33,7 +33,7 @@ const createWindow = () => {
   else {
 	win.loadFile('start.html')
   }
-//   win.webContents.openDevTools()
+  win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
